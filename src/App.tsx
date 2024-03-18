@@ -9,6 +9,7 @@ import { ToDoList} from 'components/ToDoList';
 import { useState } from 'react';
 import { DataView  } from 'components/DataView';
 import { TextInput  } from 'components/TextInput';
+import { ToDoInput } from 'components/ToDoInput';
 
 const Container = styled.div`
   height: 100vh;
@@ -18,15 +19,11 @@ const Container = styled.div`
   justify-content: center;
   background-color: #eeeeee;
 `;
-const ToDoInput =styled.div`
-  position: absolute;
-  top=0;
-  left:0;
-  bottom:0;
-  right:0;
-  display:flex;
-  align-items:center;
-  justify-content: center;
+const ShowInputButton=styled.div`
+  positon:absolute;
+  right:40px;
+  bottom:40px;
+  z-index:1;
 `;
 const Background=styled.div`
   position:absolute;
@@ -62,17 +59,17 @@ function App() {
     setToDoList(toDoList.filter((item)=> item !== todo));
   };
   const [toDo, setToDo]=useState('');
-  const onAdd = () => {
-    if (toDo==='') return;
+  const onAdd = (toDo:string) => {
     setToDoList([...toDoList, toDo]);
-    setToDo('');
   };
 
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      <TextInput value={toDo} onChange={setToDo}/>
-      <Button label="추가" color="#304FFE" onClick={onAdd}/>
+      <ToDoInput onAdd={onAdd} />  
+      <ShowInputButton>
+        <Button label="할 일 추가" color="#304FFE" />
+      </ShowInputButton>
     </Container>
   );
 }

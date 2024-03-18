@@ -12,7 +12,6 @@ const Container = styled.div`
   padding: 32px;
   border-radius:8px;
 `;
-
 interface Props {
     readonly toDoList: ReadonlyArray<string>;
     readonly onDelete?: (todo: string) => void;
