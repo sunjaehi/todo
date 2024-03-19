@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { TextInput } from "components/TextInput";
 import { Button } from "components/Button";
 import { Title } from "components/Title";
+import React from 'react';
 
 const Container = styled.div`
   position:absolute;
@@ -38,7 +39,7 @@ const InputContainer=styled.div`
   justify-content: center;
 `;
 interface Props {
-    readonly onAdd: (toDo: string)=>void;
+  readonly onAdd: (toDo: string)=>void;
 }
 export const ToDoInput=({onAdd}:Props)=> {
     const [toDo,setToDo]=useState('');
