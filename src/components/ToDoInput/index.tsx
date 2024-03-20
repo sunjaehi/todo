@@ -44,7 +44,7 @@ interface Props {
 export const ToDoInput=({onAdd}:Props)=> {
     const [toDo,setToDo]=useState('');
     const onAddToDo=()=> {
-        if(toDo==='')return;
+        if(toDo==='') return;
         onAdd(toDo);
         setToDo('');
     };

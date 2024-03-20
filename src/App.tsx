@@ -11,6 +11,7 @@ import { DataView  } from 'components/DataView';
 import { TextInput  } from 'components/TextInput';
 import { ToDoInput } from 'components/ToDoInput';
 import { ShowInputButton } from 'components/ShowInputButton';
+import { InputContainer } from 'components/InputContainer';
 
 const Container = styled.div`
   height: 100vh;
@@ -50,35 +51,25 @@ const Contents = styled.div`
   border-radius: 8px;
   z-index=1;
 `; 
-const InputContainer=styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 function App() {
   const [toDoList, setToDoList]=useState([
     'React',
     'Compile',
   ]);
-  const [showToDoInput,setShowToDoInput]=useState(false);
+  //const [showToDoInput,setShowToDoInput]=useState(false);
   const onDelete = (toDo: string) => {
     setToDoList(toDoList.filter((item)=> item !== toDo));
   };
-  const [toDo, setToDo]=useState('');
+  //const [toDo, setToDo]=useState('');
   const onAdd = (toDo:string) => {
     setToDoList([...toDoList, toDo]);
-    setShowToDoInput(false);
   };
 
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      {showToDoInput && <ToDoInput onAdd={onAdd} />}
-      <ShowInputButton
-        show={showToDoInput}
-        onClick={()=>setShowToDoInput(!showToDoInput)}
-      />
+      <InputContainer onAdd={onAdd} />
     </Container>
   );
 }
